@@ -1,0 +1,23 @@
+#cloud-config
+package_update: true
+packages:
+  - nginx
+
+write_files:
+  - path: /var/www/html/index.html
+    content: |
+      <!DOCTYOE html>
+      <html lang="pt-BR">
+      <head>
+        <meta charset="UTF-8">
+        <title>Meu servidor</title>
+      </head>
+      <body>
+        <h1>Servidor configurado com Cloud-init!</h1>
+        <p>Minha primeira automação de infraestrutura.</p>
+      </body>
+      </html>
+
+runcmd:
+  - systemctl enable nginx
+  - system restart nginx
